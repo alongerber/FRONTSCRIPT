@@ -21,7 +21,9 @@ COPY static/ ./static/
 
 # בענן, MEDIA_ROOT צריך להצביע לדיסק קבוע (למשל /var/data),
 # אחרת הפרויקטים ייעלמו בכל פריסה מחדש.
+# ברירת מחדל בטוחה לשרת קטן. Render דורס אותה דרך render.yaml.
 ENV MEDIA_ROOT=/var/data \
+    FFMPEG_THREADS=2 \
     PYTHONUNBUFFERED=1
 RUN mkdir -p /var/data/library /var/data/projects /var/data/exports
 

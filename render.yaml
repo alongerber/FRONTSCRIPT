@@ -1,21 +1,25 @@
-# פריסה בלחיצה ל-Render. חבר את ה-repo ובחר "Blueprint".
 services:
   - type: web
     name: front-studio
     runtime: docker
-    plan: starter          # ~$7 לחודש. שדרוג ל-standard אם הרינדור איטי.
+    region: frankfurt
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /healthz
     disk:
       name: media
-      mountPath: /var/data # דיסק קבוע — בלעדיו הפרויקטים נמחקים בכל פריסה
+      mountPath: /var/data
       sizeGB: 10
     envVars:
       - key: MEDIA_ROOT
         value: /var/data
+      - key: FFMPEG_THREADS
+        value: "2"
       - key: SECRET_KEY
         generateValue: true
       - key: STUDIO_PASSWORD
-        sync: false        # תמלא ידנית בלוח של Render
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: ELEVENLABS_API_KEY

@@ -245,6 +245,9 @@ async def render(
         "-pix_fmt", "yuv420p",
         "-movflags", "+faststart",
         "-r", "30",
+        # מגבלת ליבות — בלעדיה שרת עם 512MB נופל באמצע הרינדור
+        "-threads", str(settings.ffmpeg_threads),
+        "-filter_complex_threads", str(settings.ffmpeg_threads),
         str(dest),
     ]
 

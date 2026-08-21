@@ -41,6 +41,9 @@ class Settings:
     media_root: Path = Path(os.environ.get("MEDIA_ROOT", BASE_DIR / "media")).resolve()
     ffmpeg_bin: str = os.environ.get("FFMPEG_BIN", "ffmpeg")
     ffprobe_bin: str = os.environ.get("FFPROBE_BIN", "ffprobe")
+    # מגבלת ליבות ל-FFmpeg. שרת קטן (512MB) יקרוס בלי זה,
+    # כי libx264 מקצה חוצץ פריימים נפרד לכל ליבה.
+    ffmpeg_threads: int = max(1, int(os.environ.get("FFMPEG_THREADS", "2")))
 
     # קנבס — אנכי לטיקטוק/רילס
     canvas_width: int = int(os.environ.get("CANVAS_WIDTH", "1080"))

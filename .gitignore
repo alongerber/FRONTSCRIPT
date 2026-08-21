@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+media/projects/*
+media/exports/*
+media/library/*
+!media/projects/.gitkeep
+!media/exports/.gitkeep
+!media/library/.gitkeep
+.DS_Store

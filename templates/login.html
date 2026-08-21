@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>פרונט סטודיו</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/studio.css">
+</head>
+<body>
+  <div class="login-shell">
+    <form class="login-card" method="post" action="/login">
+      <div class="login-mark">פרונט<span>.</span></div>
+      <div class="login-sub">סטודיו הפקת וידאו</div>
+      <input type="password" name="password" placeholder="סיסמה" autofocus autocomplete="current-password" required>
+      <button type="submit">כניסה</button>
+      {% if error %}<div class="login-error">{{ error }}</div>{% endif %}
+    </form>
+  </div>
+</body>
+</html>
